@@ -1,6 +1,6 @@
-import 'package:bloodbankapp1/dashboard.dart';
-import 'package:bloodbankapp1/dbhelp.dart';
-import 'package:bloodbankapp1/user.dart';
+import 'package:bloodbankapp1/features/dashboard/dashboard.dart';
+import 'package:bloodbankapp1/core/dbhelp.dart';
+import 'package:bloodbankapp1/data/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 enum gender {Male,female,others}//to create radiobutton to select gender
@@ -35,7 +35,7 @@ class _RegistrationState extends State<Registration> {
               title: Text('ADD DONNER DETAILS',style: GoogleFonts.lato(fontWeight: FontWeight.bold,fontSize: 23)),
               centerTitle: true
           ),
-          body: Padding(padding: EdgeInsets.fromLTRB(10, 60, 10, 0),
+          body: Padding(padding: EdgeInsets.fromLTRB(20, 70, 20, 0),
               child: Form(key: _formkey,
                 child: Column(
                   children: [
@@ -46,7 +46,7 @@ class _RegistrationState extends State<Registration> {
                               borderRadius: BorderRadius.circular(10)
                           ),
                           hintText: 'Name',
-                          labelText: 'Enter your Name'
+                          labelText: 'Enter your Name',
                       ),
                       validator: (value){
                         if (value?.length==0){
@@ -57,33 +57,36 @@ class _RegistrationState extends State<Registration> {
                       },
                     ),
                     SizedBox(height: 15,),
-                    Row(
-                      children: [
-                        Container(width: 100,height: 70,
-                          child: Stack(
-                              children:[ Radio(value: gender.Male, groupValue: defaultgender, onChanged:(values){
-                                setState(() {
-                                  defaultgender=values;
-                                });
-                              } ),
-                                Positioned(left: 25,
-                                    child: Image(image: AssetImage('asset/image/man.png'),width: 70,))
-                              ]
+                    Container(
+                      height: 80,width: 400,
+                      decoration: BoxDecoration(border: Border.all(width: 1,color: Colors.grey),borderRadius: BorderRadius.circular(10),),
+                      child:Stack(
+                        children: [
+                          Positioned(
+                               top: 10,left: 10,
+                              child: Text('Select your Gender',style: GoogleFonts.lato(fontWeight: FontWeight.bold),)),
+                          Positioned(top: 30,
+                            child: Radio(value: gender.Male, groupValue: defaultgender, onChanged:(values){
+                              setState(() {
+                                defaultgender=values;
+                              });
+                            } ),
                           ),
-                        ),
-                        Container(width: 100,height: 70,
-                          child: Stack(
-                              children:[ Radio(value: gender.female, groupValue: defaultgender, onChanged:(values){
-                                setState(() {
-                                  defaultgender=values;
-                                });
-                              } ),
-                                Positioned(left: 40,
-                                    child: Image(image: AssetImage('asset/image/women.png'),width: 70,))
-                              ]
+                          Positioned(
+                              left: 40,top: 43,
+                              child: Text('MALE')),
+                          Positioned(top: 30,left: 130,
+                            child: Radio(value: gender.female, groupValue: defaultgender, onChanged:(values){
+                              setState(() {
+                                defaultgender=values;
+                              });
+                            } ),
                           ),
-                        ),
-                      ],
+                          Positioned(
+                              left: 170,top: 43,
+                              child: Text('FEMALE')),
+                        ],
+                      )
                     ),
                     SizedBox(height: 10,),
                     TextFormField(
@@ -131,7 +134,7 @@ class _RegistrationState extends State<Registration> {
                     ),
                     SizedBox(height: 10,),
                     TextFormField(
-                      maxLength: 10,
+                      maxLength: 10,keyboardType: TextInputType.phone,
                       controller: Phone,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -149,7 +152,7 @@ class _RegistrationState extends State<Registration> {
                       },
                     ),
                     SizedBox(height: 10,),
-                    Container(width: 200,height: 60,
+                    Container(width: 250,height: 60,
                       child: ElevatedButton(onPressed: (){
                               if(_formkey.currentState!.validate()){
                                 User u=User(Name: name.text, Phonenumber:Phone.text,  Age: age.text, weight: Weight.text, bloodgroup: selc??'Not specified');
@@ -167,14 +170,14 @@ class _RegistrationState extends State<Registration> {
                                 return Dashboard();
                               }));
                             },
-                                child:Text('REGISTER',style: GoogleFonts.lato(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 18),),
-                              style: ElevatedButton.styleFrom(
+                                child:Text('REGISTER',style: GoogleFonts.lato(fontWeight: FontWeight.bold,color: Colors.white,fontSize: 18),),
+                              style: ElevatedButton.styleFrom(backgroundColor:   Color(0xfffc2b6f),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20),
                                   side: BorderSide(
                                     width: 3.0,
-                                    color:  Color(0xfffc2b6f),
-                                  )
+                                      color:  Color(0xfffc2b6f)
+                                  ),
                                 ),
                               ),
                             ),

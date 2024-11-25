@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:bloodbankapp1/dashboard.dart';
+import 'package:bloodbankapp1/features/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
@@ -66,7 +66,7 @@ class _AccountState extends State<Account> {
       },
     );
   }
-
+  String phone='';
   String name='';
   String email='';
   String pass='';
@@ -83,6 +83,7 @@ class _AccountState extends State<Account> {
       name=preferences.getString('username')!;
       email=preferences.getString('Mail ID')!;
       pass=preferences.getString('Password')!;
+      phone=preferences.getString('Phone number')!;
     });
   }
   Widget build(BuildContext context) {
@@ -121,7 +122,7 @@ class _AccountState extends State<Account> {
                           child: Icon(Icons.person,color: Color(0xffe91d62))),
                       Positioned(
                           top: 205,left: 70,
-                          child: Text('Name',style:GoogleFonts.lato(fontWeight: FontWeight.bold,color: Colors.grey,) ,)),
+                          child: Text('NAME',style:GoogleFonts.lato(fontWeight: FontWeight.bold,color: Colors.grey,) ,)),
                       Positioned(
                           left: 50,top: 305,
                           child: Container(width: 300,height: 35,
@@ -136,7 +137,22 @@ class _AccountState extends State<Account> {
                           child: Icon(Icons.email_outlined,color: Color(0xffe91d62))),
                       Positioned(
                           top: 279,left: 68,
-                          child: Text('Email Id',style:GoogleFonts.lato(fontWeight: FontWeight.bold,color: Colors.grey,) ,)),
+                          child: Text('EMAIL ID',style:GoogleFonts.lato(fontWeight: FontWeight.bold,color: Colors.grey,) ,)),
+                      Positioned(
+                          left: 50,top: 385,
+                          child: Container(width: 300,height: 35,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),border: Border.all(color: Colors.grey)
+                              ),
+                              child: Padding(
+                                  padding: EdgeInsets.fromLTRB(48, 3, 0, 2),
+                                  child: Text('$phone',style: GoogleFonts.lato(fontWeight: FontWeight.bold,color: Colors.black,fontSize: 18),)))),
+                      Positioned(
+                          left: 60,top: 390,
+                          child: Icon(Icons.call,color: Color(0xffe91d62))),
+                      Positioned(
+                          top: 360,left: 68,
+                          child: Text('PHONE NUMBER ',style:GoogleFonts.lato(fontWeight: FontWeight.bold,color: Colors.grey,) ,)),
                       Positioned(top: 140,left: 175,
                         child: IconButton(onPressed: (){
                           _showImageSourceOptions();

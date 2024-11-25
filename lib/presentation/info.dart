@@ -1,4 +1,4 @@
-import 'package:bloodbankapp1/choiceloginorreg.dart';
+import 'package:bloodbankapp1/features/authentication/choiceloginorreg.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -1,6 +1,6 @@
-import 'package:bloodbankapp1/dashboard.dart';
-import 'package:bloodbankapp1/dbhelp.dart';
-import 'package:bloodbankapp1/user.dart';
+import 'package:bloodbankapp1/features/dashboard/dashboard.dart';
+import 'package:bloodbankapp1/core/dbhelp.dart';
+import 'package:bloodbankapp1/data/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -21,7 +21,7 @@ class _DonnerlistState extends State<Donnerlist> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          elevation: 5,
+          elevation: 1,
           leading: IconButton(
             onPressed: () {
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext) {
@@ -36,7 +36,7 @@ class _DonnerlistState extends State<Donnerlist> {
           ),
         ),
         body: Container(
-          color: Color(0x42d5cfcf),
+          color: Color(0xb8d5cfcf).withOpacity(0.3),
           child: Column(
             children: [
               Padding(

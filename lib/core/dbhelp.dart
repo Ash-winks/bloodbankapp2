@@ -1,4 +1,4 @@
-import 'package:bloodbankapp1/user.dart';
+import 'package:bloodbankapp1/data/models/user.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -14,6 +14,7 @@ class Databasehelp{
       version: 1,
       onCreate: (Database db,int version){
         db.execute('CREATE TABLE usertable(Id INTEGER PRIMARY KEY AUTOINCREMENT,Name TEXT,Phonenumber TEXT,Age INTEGER,weight INTEGER,bloodgroup TEXT)');
+        db.execute('CREATE TABLE donation_request (Id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,location TEXT');
       }
     );
   }
@@ -38,6 +39,20 @@ class Databasehelp{
     List<Map<String,dynamic>> map=await _database.query("usertable");//to fetch all data
     return List.generate(map.length, (index){//by refering to index we can return object[index refers to the value of map which keep itirrating]
       return User(Id:map[index]['Id'].toString(),Name:map[index]['Name'], Phonenumber: map[index]['Phonenumber'], Age: map[index]['Age'].toString(), weight: map[index]['weight'].toString(), bloodgroup: map[index]['bloodgroup']);
+    });
+  }
+  Future<int>insertdonationrequest(Donationrequest request) async {
+    await opendb();
+    return await _database.insert('donation_request', request.toMap());
+  }
+  Future<List<Donationrequest>?> getAllDonationRequests() async {
+    await opendb();
+    List<Map<String, dynamic>> map = await _database.query("donation_requests");
+    return List.generate(map.length, (index) {
+      return Donationrequest(
+        name: map[index]['name'],
+        loaction: map[index]['location'],
+      );
     });
   }
 }

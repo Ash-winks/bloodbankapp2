@@ -1,10 +1,11 @@
-import 'package:bloodbankapp1/donner%20details.dart';
-import 'package:bloodbankapp1/user.dart';
+import 'package:bloodbankapp1/features/campaign/campaign.dart';
+import 'package:bloodbankapp1/features/donor/donner%20details.dart';
+import 'package:bloodbankapp1/data/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'dbhelp.dart';
+import '../core/dbhelp.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -32,244 +33,267 @@ class _HomepageState extends State<Homepage> {
             
             title: Text('WELCOME',style: GoogleFonts.lato(fontWeight: FontWeight.bold,fontSize: 25),),
           ),
-          body: Column(
-                   children: [
-                     Stack(
-                       children:[
-                         Container(height: 210,width: double.infinity,
-                         child: PageView.builder(itemCount: page.length,
-                           controller: controller,
-                           itemBuilder: (BuildContext context, int index) {
-                           return Padding(
-                             padding: const EdgeInsets.all(1.0),
-                             child: Container(
-                               child: page[index],
-                             ),
-                           );
-                           },)
-                       ),]
-                     ),
-                      Flexible(
-                        child: Container(
-                          height: MediaQuery.of(context).size.height,
-                          color: Color(0x42d5cfcf),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(16.5, 10, 10, 0),
-                                child: Row(
-                                  children: [
-                                    Stack(
-                                        children:[
-                                          Container(
-                                            width: 120,height: 110,
-                                            child: Padding(
-                                                padding:EdgeInsets.fromLTRB(15,65 , 1, 10) ,
-                                                child: Text('Campaign',style: GoogleFonts.lato(
-                                                    fontSize: 19,fontWeight: FontWeight.bold
-                                                ),)),
-                                            decoration: BoxDecoration(
-                                                      boxShadow: [
-                                                        BoxShadow(
-                                                          color: Colors.white
-                                                        )
-                                                      ],
-                                                borderRadius: BorderRadius.circular(20),
-                                                      color: Colors.white
-                                            ),
-                                          ),
-                                          Positioned(left: 29,top: 10,
-                                              child: Icon(Icons.campaign_sharp,color: Color(0xffe91d62),size: 50,),
-                                            ),
-
-                                        ]
+          body: Container(
+            child: Column(
+                     children: [
+                       Stack(
+                         children:[
+                           Container(height: 210,width: double.infinity,
+                           child: PageView.builder(itemCount: page.length,
+                             controller: controller,
+                             itemBuilder: (BuildContext context, int index) {
+                             return Padding(
+                               padding: const EdgeInsets.all(1.0),
+                               child: Container(
+                                 child: page[index],
+                               ),
+                             );
+                             },)
+                         ),]
+                       ),
+                        Flexible(
+                          child: Container(
+                            height: MediaQuery.of(context).size.height,
+                            color: Color(0x42d5cfcf),
+                            child: Column(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 6, 185, 10),
+                                  child: Container(
+                                    width: 180,height: 30,
+                                    decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Color(0xff3b3b3b)
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(10)
                                     ),
-                                    SizedBox(width: 10,),
-                                    Stack(
-                                        children:[
-                                          Container(
-                                            width: 120,height: 110,
-                                            child: Padding(
-                                                padding:EdgeInsets.fromLTRB(27,65 , 1, 10) ,
-                                                child: Text('Donate',style: GoogleFonts.lato(
-                                                  fontSize: 19,fontWeight: FontWeight.bold
-                                                ),)),
-                                            decoration: BoxDecoration(
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.white
-                                                  )
-                                                ],
-                                                borderRadius: BorderRadius.circular(20),
-                                                color: Colors.white
-                                            ),
-                                          ),
-                                          Positioned(bottom: 30,left: 10,
-                                            child: Image.asset('asset/image/bloodbag2n.png',width: 95,)
-                                          ),
-                                          // Icon(Icons.bloodtype,color:Color(0xffe91d62) ,)
-                                        ]
-                                    ),
-                                    SizedBox(width: 10,),
-                                    Stack(
-                                        children:[
-                                          Container(
-                                            width: 120,height: 110,
-                                            child: Padding(
-                                                padding:EdgeInsets.fromLTRB(10,65 , 1, 10) ,
-                                                child: Text('Blood Bank',style: GoogleFonts.lato(
-                                                  fontSize: 19,fontWeight: FontWeight.bold
-                                                ),)),
-                                            decoration: BoxDecoration(
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                      color: Colors.white
-                                                  )
-                                                ],
-                                                borderRadius: BorderRadius.circular(20),
-                                                color: Colors.white
-                                            ),
-                                          ),
-                                          Positioned(left: 29,top: 10,
-                                            child: Icon(Icons.bloodtype,color: Color(0xffe91d62),size: 50,),
-                                          ),
-
-                                        ]
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 15,),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(0, 10, 170, 10),
-                                child: Container(
-                                  width: 200,height: 30,
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Color(0xff3b3b3b)
-                                        )
-                                      ],
-                                      borderRadius: BorderRadius.circular(10)
+                                    child: Center(child: Text('SAVE LIVES',style: GoogleFonts.lato(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),)),
                                   ),
-                                  child: Center(child: Text('DONATION REQUEST',style: GoogleFonts.lato(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),)),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
-                                child: SingleChildScrollView(
-                                  scrollDirection: Axis.horizontal,
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(16.5, 3, 10, 0),
                                   child: Row(
                                     children: [
-                                      Card(elevation: 8,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(20)
-                                        ),
+                                      GestureDetector(onTap: (){
+                                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext){
+                                          return Campaign();
+                                        }));
+                                      },
                                         child: Stack(
-                                          children: [
-                                            Container(
-                                              width: 250,height: 100,
-                                              decoration: BoxDecoration(
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                        color: Color(0xd7ff0052)
-                                                    )
-                                                  ],
-                                                  borderRadius: BorderRadius.circular(20)
+                                            children:[
+                                              Container(
+                                                width: 120,height: 110,
+                                                child: Padding(
+                                                    padding:EdgeInsets.fromLTRB(15,65 , 1, 10) ,
+                                                    child: Text('Campaign',style: GoogleFonts.lato(
+                                                        fontSize: 19,fontWeight: FontWeight.bold
+                                                    ),)),
+                                                decoration: BoxDecoration(
+                                                          boxShadow: [
+                                                            BoxShadow(
+                                                              color: Colors.white
+                                                            )
+                                                          ],
+                                                    borderRadius: BorderRadius.circular(20),
+                                                          color: Colors.white
+                                                ),
                                               ),
-                                            ),
-                                            Positioned(top: 10,left: 5,
-                                                child: Icon(Icons.person)),
-                                            Positioned(
-                                                left: 35,top: 8,
-                                                child: Text('John',style: GoogleFonts.lato(fontSize: 20,fontWeight: FontWeight.bold,color:Colors.white),)),
-                                            Positioned(left: 5,top: 40,
-                                                child: Icon(Icons.location_on_outlined)),
-                                            Positioned(
-                                                left: 35,top: 40,
-                                                child: Text('Multispeciality '
-                                                    'Hospital',style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.bold,color:Colors.white),))
-                                          ],
+                                              Positioned(left: 29,top: 10,
+                                                  child: Icon(Icons.campaign_sharp,color: Color(0xffe91d62),size: 50,),
+                                                ),
+
+                                            ]
                                         ),
                                       ),
-                                      SizedBox(width: 20,),
+                                      SizedBox(width: 10,),
                                       Stack(
-                                        children: [
-                                          Card(elevation: 8,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(20)
-                                          ),
-                                            child: Container(
-                                              width: 250,height: 100,
+                                          children:[
+                                            Container(
+                                              width: 120,height: 110,
+                                              child: Padding(
+                                                  padding:EdgeInsets.fromLTRB(27,65 , 1, 10) ,
+                                                  child: Text('Donate',style: GoogleFonts.lato(
+                                                    fontSize: 19,fontWeight: FontWeight.bold
+                                                  ),)),
                                               decoration: BoxDecoration(
                                                   boxShadow: [
                                                     BoxShadow(
-                                                        color: Color(0xd6ff0052)
+                                                        color: Colors.white
                                                     )
                                                   ],
                                                   borderRadius: BorderRadius.circular(20),
-
+                                                  color: Colors.white
                                               ),
                                             ),
-                                          ),
-                                          Positioned(top: 10,left: 5,
-                                              child: Icon(Icons.person)),
-                                          Positioned(
-                                              left: 35,top: 8,
-                                              child: Text('Ajith',style: GoogleFonts.lato(fontSize: 20,fontWeight: FontWeight.bold,color:Colors.white),)),
-                                          Positioned(left: 5,top: 40,
-                                              child: Icon(Icons.location_on_outlined)),
-                                          Positioned(
-                                              left: 35,top: 40,
-                                              child: Text('Harmony Health Center',style: GoogleFonts.lato(fontSize: 19,fontWeight: FontWeight.bold,color:Colors.white ),))
-                                        ],
-                                      )
+                                            Positioned(bottom: 30,left: 10,
+                                              child: Image.asset('asset/image/bloodbag2n.png',width: 95,)
+                                            ),
+                                            // Icon(Icons.bloodtype,color:Color(0xffe91d62) ,)
+                                          ]
+                                      ),
+                                      SizedBox(width: 10,),
+                                      Stack(
+                                          children:[
+                                            Container(
+                                              width: 120,height: 110,
+                                              child: Padding(
+                                                  padding:EdgeInsets.fromLTRB(10,65 , 1, 10) ,
+                                                  child: Text('Blood Bank',style: GoogleFonts.lato(
+                                                    fontSize: 19,fontWeight: FontWeight.bold
+                                                  ),)),
+                                              decoration: BoxDecoration(
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                        color: Colors.white
+                                                    )
+                                                  ],
+                                                  borderRadius: BorderRadius.circular(20),
+                                                  color: Colors.white
+                                              ),
+                                            ),
+                                            Positioned(left: 29,top: 10,
+                                              child: Icon(Icons.bloodtype,color: Color(0xffe91d62),size: 50,),
+                                            ),
+
+                                          ]
+                                      ),
                                     ],
                                   ),
                                 ),
-                              ),
-                              SizedBox(height: 10,),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(15, 5, 110, 5),
-                                child: Container(
-                                  width: 200,height: 30,
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                            color: Color(0xff3b3b3b)
+                                SizedBox(height: 8,),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 5, 170, 10),
+                                  child: Container(
+                                    width: 200,height: 30,
+                                    decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Color(0xff3b3b3b)
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    child: Center(child: Text('DONATION REQUEST',style: GoogleFonts.lato(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),)),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(10, 0, 10, 10),
+                                  child: SingleChildScrollView(
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: [
+                                        Card(elevation: 8,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(20)
+                                          ),
+                                          child: Stack(
+                                            children: [
+                                              Container(
+                                                width: 250,height: 100,
+                                                decoration: BoxDecoration(
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                          color: Color(0xd7ff0052)
+                                                      )
+                                                    ],
+                                                    borderRadius: BorderRadius.circular(20)
+                                                ),
+                                              ),
+                                              Positioned(top: 10,left: 5,
+                                                  child: Icon(Icons.person,color: Colors.white,)),
+                                              Positioned(
+                                                  left: 35,top: 8,
+                                                  child: Text('John',style: GoogleFonts.lato(fontSize: 20,fontWeight: FontWeight.bold,color:Colors.white),)),
+                                              Positioned(left: 5,top: 40,
+                                                  child: Icon(Icons.location_on,color: Colors.white)),
+                                              Positioned(
+                                                  left: 35,top: 40,
+                                                  child: Text('Multispeciality '
+                                                      'Hospital',style: GoogleFonts.lato(fontSize: 18,fontWeight: FontWeight.bold,color:Colors.white),))
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(width: 20,),
+                                        Stack(
+                                          children: [
+                                            Card(elevation: 8,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(20)
+                                            ),
+                                              child: Container(
+                                                width: 250,height: 100,
+                                                decoration: BoxDecoration(
+                                                    boxShadow: [
+                                                      BoxShadow(
+                                                          color: Color(0xd7ff0052)
+                                                      )
+                                                    ],
+                                                    borderRadius: BorderRadius.circular(20),
+
+                                                ),
+                                              ),
+                                            ),
+                                            Positioned(top: 14,left: 8,
+                                                child: Icon(Icons.person,color: Colors.white)),
+                                            Positioned(
+                                                left: 37,top: 12,
+                                                child: Text('Ajith',style: GoogleFonts.lato(fontSize: 20,fontWeight: FontWeight.bold,color:Colors.white),)),
+                                            Positioned(left: 8,top: 45,
+                                                child: Icon(Icons.location_on,color: Colors.white)),
+                                            Positioned(
+                                                left: 35,top: 45,
+                                                child: Text('Harmony Health Center',style: GoogleFonts.lato(fontSize: 19,fontWeight: FontWeight.bold,color:Colors.white ),))
+                                          ],
                                         )
                                       ],
-                                      borderRadius: BorderRadius.circular(10)
+                                    ),
                                   ),
-                                  child: Center(child: Text('AVAILABLE DONNERS',style: GoogleFonts.lato(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),)),
                                 ),
-                              ),
+                                SizedBox(height: 5,),
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(15, 0, 110, 5),
+                                  child: Container(
+                                    width: 200,height: 30,
+                                    decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Color(0xff3b3b3b)
+                                          )
+                                        ],
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    child: Center(child: Text('AVAILABLE DONNERS',style: GoogleFonts.lato(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 17),)),
+                                  ),
+                                ),
 
-                                  InkWell(
-                                      onTap: (){
-                                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext){
-                                          return Donnerlist();
-                                        }));
-                                      },
-                                      child: Text('SEE All',style: GoogleFonts.lato(fontSize: 17,fontWeight: FontWeight.bold),)),
+                                    InkWell(
+                                        onTap: (){
+                                          Navigator.push(context, MaterialPageRoute(builder: (BuildContext){
+                                            return Donnerlist();
+                                          }));
+                                        },
+                                        child: Text('SEE All',style: GoogleFonts.lato(fontSize: 17,fontWeight: FontWeight.bold),)),
 
-                            ],
+                              ],
+                            ),
+                                Container(
+                                  height: 150,
+                                  child: Mylistt(),
+                                ) ,
+                              ],
+                            ),
                           ),
-                              Container(
-                                height: 150,
-                                child: Mylistt(),
-                              ) ,
-                            ],
-                          ),
-                        ),
-                      )
-
-
-
-                   ],
-              ),
+                        )
+            
+            
+            
+                     ],
+                ),
+          ),
 
           ),
           );

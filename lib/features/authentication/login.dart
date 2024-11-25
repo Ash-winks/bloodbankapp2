@@ -1,5 +1,5 @@
-import 'package:bloodbankapp1/dashboard.dart';
-import 'package:bloodbankapp1/signup.dart';
+import 'package:bloodbankapp1/features/dashboard/dashboard.dart';
+import 'package:bloodbankapp1/features/authentication/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';

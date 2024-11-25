@@ -1,4 +1,5 @@
-import 'package:bloodbankapp1/spalshscrn.dart';
+import 'package:bloodbankapp1/features/campaign/campaign.dart';
+import 'package:bloodbankapp1/presentation/spalshscrn.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,home: Splash(),);
+    return MaterialApp(debugShowCheckedModeBanner: false,home: Splash());
   }
 }
 

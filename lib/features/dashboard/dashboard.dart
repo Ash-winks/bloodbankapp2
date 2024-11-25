@@ -1,6 +1,6 @@
-import 'package:bloodbankapp1/account.dart';
-import 'package:bloodbankapp1/home.dart';
-import 'package:bloodbankapp1/registration.dart';
+import 'package:bloodbankapp1/presentation/account.dart';
+import 'package:bloodbankapp1/presentation/home.dart';
+import 'package:bloodbankapp1/features/authentication/registration.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {

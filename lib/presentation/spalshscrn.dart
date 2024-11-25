@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:bloodbankapp1/info.dart';
+import 'package:bloodbankapp1/presentation/info.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

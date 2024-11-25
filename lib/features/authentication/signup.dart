@@ -1,5 +1,5 @@
-import 'package:bloodbankapp1/dashboard.dart';
-import 'package:bloodbankapp1/login.dart';
+import 'package:bloodbankapp1/features/dashboard/dashboard.dart';
+import 'package:bloodbankapp1/features/authentication/login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -221,6 +221,7 @@ class _SignuppageState extends State<Signuppage> {
                           pref.setString("username",Namecontroller.text);
                           pref.setString("Mail ID", emailcontroller.text);
                           pref.setString("Password", passcontroller.text);
+                          pref.setString("Phone number", Phonecontroller.text);
                           Navigator.push(context, MaterialPageRoute(builder: (BuildContext){
                             return Dashboard();
                           }));

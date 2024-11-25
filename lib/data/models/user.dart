@@ -1,8 +1,9 @@
+
 class User{
   String? Id;
   late String Name;
   late String Phonenumber;
- // late String gender;
+  late String gender;
   late String Age;
   late String weight;
   late String bloodgroup;
@@ -21,7 +22,7 @@ class User{
     var map = <String, Object?>{
       "Name":Name,
       "Phonenumber":Phonenumber,
-     // "gender":gender,
+      "gender":gender,
       "Age":Age,
       "weight":weight,
       "bloodgroup":bloodgroup
@@ -31,5 +32,18 @@ class User{
     }
     return map;
   }
-
+}
+class Donationrequest{
+  late String name;
+  late String loaction;
+  Donationrequest({required this.name,
+    required this.loaction
+  });
+  Map<String,Object?> toMap(){
+    var map=<String,Object?>{
+      "name":name,
+      "location":loaction
+    };
+    return map;
+  }
 }
