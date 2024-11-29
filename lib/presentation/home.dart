@@ -184,7 +184,7 @@ class _HomepageState extends State<Homepage> {
                                     scrollDirection: Axis.horizontal,
                                     child: Row(
                                       children: [
-                                        Card(elevation: 8,
+                                        Card(
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(20)
                                           ),
@@ -218,7 +218,7 @@ class _HomepageState extends State<Homepage> {
                                         SizedBox(width: 20,),
                                         Stack(
                                           children: [
-                                            Card(elevation: 8,
+                                            Card(
                                             shape: RoundedRectangleBorder(
                                               borderRadius: BorderRadius.circular(20)
                                             ),
@@ -365,8 +365,8 @@ class Mylistt extends StatelessWidget {
                               child: Icon(Icons.person),
                             ),
                             Positioned(
-                              left: 199,
-                              top: 60,
+                              left: 109,
+                              top: 70,
                               child: InkWell(
                                 child:  CircleAvatar(
                                   backgroundColor: Colors.white,
@@ -386,8 +386,8 @@ class Mylistt extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              left: 150,
-                              top: 60,
+                              left: 20,
+                              top: 70,
                               child: CircleAvatar(
                                 backgroundColor: Colors.white,
                                 child: InkWell(
@@ -410,18 +410,6 @@ class Mylistt extends StatelessWidget {
                               left: 50,
                               child: Text(
                                 user.Name,
-                                style: GoogleFonts.lato(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Positioned(
-                              top: 65,
-                              left: 16,
-                              child: Text(
-                                user.Phonenumber,
                                 style: GoogleFonts.lato(
                                   fontSize: 20,
                                   color: Colors.black,

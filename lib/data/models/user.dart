@@ -13,7 +13,7 @@ class User{
       {this.Id,
       required this.Name,
       required this.Phonenumber,
-     // required this.gender,
+      required this.gender,
       required this.Age,
       required this.weight,
       required this.bloodgroup});
