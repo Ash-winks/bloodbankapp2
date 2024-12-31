@@ -45,14 +45,5 @@ class Databasehelp{
     await opendb();
     return await _database.insert('donation_request', request.toMap());
   }
-  Future<List<Donationrequest>?> getAllDonationRequests() async {
-    await opendb();
-    List<Map<String, dynamic>> map = await _database.query("donation_requests");
-    return List.generate(map.length, (index) {
-      return Donationrequest(
-        name: map[index]['name'],
-        loaction: map[index]['location'],
-      );
-    });
-  }
+
 }
